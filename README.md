@@ -12,40 +12,52 @@
 
 ## `Технологии`
 
-- **ML Pipline**: ruRoBERTa-large, CatBoost, YandexGPT 3
-- **Веб-приложение**: React, Node JS
-- **Балансировка нагрузки**: Traefik
+- **NLP Pipeline**: multilingual-e5-base, Llama-3.1-8B-Instruct,
+- **База данных и хранение**: Postgres, FAISS
+- **Деплой**: FastAPI
 
 
 ## `Использование`
 
 *1. Загрузите репозиторий на свой компьютер и откройте её в вашей предпочитаемой среде разработки (IDE).* 
 ```python
-git clone https://github.com/ikanam-ai/Detection-of-welding-seams.git
+git clone https://github.com/Danessely/rutube-qa-rag.git
 ```
-*2. Откройте терминал в IDE и введите туда следующую команду:* 
+*2. Положите файл с базой вопросов в search_engine/init_data ([пример](https://drive.google.com/file/d/1lPpzDEfPvKgKKfGNqKZRB_i-yUx-7M0P/view?usp=sharing)):* 
 
-```python
-python -m venv .venv
-.\.venv\Scripts\activate
-```
-*3. Дождитесь создание папки `.venv` затем введите следующую команду:*
-
-```python
-cd Detection-of-welding-seams/frontend/streamlit
-```
-*3.  Инициализация проекта:*
-
-```python
-poetry init
-poetry update
-poetry install
-```
-*4. Запустите приложение через Poetry:*
-
-```python
-poetry run streamlit run zapusk.py
-```
+3. Создайте `.env` файл в корневой директории по следующему примеру
+    ```
+    # ---- SEARCH_ENGINE/PSQL ----
+    SEARCH_ENGINE_PORT=5041
+    DB_NAME=db_name
+    DB_USER=user
+    DB_PASSWORD=pass
+    EMBEDDER_URL=http://search_embedder:5043
+    NEURAL_URL=http://neural_worker:7860
+    DB_HOST=postgres
+    DB_PORT=5044
+    
+    # ---- EMBEDDER ----
+    EMBEDDER_PORT=5043
+    NVIDIA_VISIBLE_DEVICES_EMB=0
+    TRANSFORMERS_CACHE_EMB=/cache/
+    
+    # ---- NEURAL_WORKER ----
+    HF_TOKEN=...
+    WORKER_PORT=7860
+    NVIDIA_VISIBLE_DEVICES_LLM=0
+    TRANSFORMERS_CACHE_LLM=/cache/
+    
+    # ---- STREAMLIT ----
+    SE_HOST=search_engine
+    SE_PORT=5041
+    ``` 
+4. Соберите и запустите контейнеры
+   ```
+   sudo docker-compose build
+   sudo docker-compose up
+   ```
+5. Поздравляем! (API эндпоинты можно посмотреть на `http://localhost:5041/docs`.
 
 ## `Ссылки`
 
