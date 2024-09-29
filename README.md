@@ -52,7 +52,7 @@ TRANSFORMERS_CACHE_LLM=/cache/
 SE_HOST=search_engine
 SE_PORT=5041
 ``` 
-*4. Соберите и запустите контейнеры.*
+*4. Соберите и запустите контейнеры (создание базы индексов может занять несколько минут).*
 ```
 sudo docker-compose build
 sudo docker-compose up
