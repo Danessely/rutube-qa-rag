@@ -63,7 +63,7 @@ sudo docker-compose up
 
 Наш [Telegram-бот](https://t.me/RutubeFAQ_bot)
 
-[Screencast](...) наших сервисов
+[Screencast](https://drive.google.com/drive/folders/1zeSSYbP7UjPTKG6UYtQt0sv_R3EVceIw?dmr=1&ec=wgc-drive-globalnav-goto) наших сервисов
 
 ## `Пример работы TG-бота`
 
