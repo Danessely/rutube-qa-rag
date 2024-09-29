@@ -1,3 +1,4 @@
+from collections import Counter
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
@@ -21,6 +22,19 @@ from src.config import popular_answers
 # )
 # from contracts import ChatHistory
 # from config import popular_answers
+
+
+def most_frequent_category(sources_list):
+    # Extract categories from the 'sources' list
+    categories = [source['category'] for source in sources_list]
+    
+    # Count occurrences of each category
+    category_count = Counter(categories)
+    
+    # Find the most common category
+    most_common_category = category_count.most_common(1)[0][0]
+    
+    return most_common_category.split('_')
 
 
 router = APIRouter(prefix="/api/v1", tags=["qa_api"])
@@ -84,9 +98,11 @@ async def search(
         session=request.state.db,
         f_index=request.state.fd,
     )
+    
+    classes_qa = most_frequent_category(result)
 
     qa = await qa_stuff(rewrited, result)
 
     return JSONResponse(
-        content={"qa_answer": qa, "sources": result, "exit": f"QA"} | {"success": True}
+        content={"qa_answer": qa, "classes": classes_qa, "sources": result, "exit": f"QA"} | {"success": True}
     )
