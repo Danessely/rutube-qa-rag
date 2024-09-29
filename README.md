@@ -67,8 +67,11 @@ sudo docker-compose up
 
 ## `Пример работы TG-бота`
 
+### Видео
+
 https://github.com/user-attachments/assets/508ab99e-198a-4539-9e04-d1be4f063c83
- 
+
+### Фото
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/Y1OV/project_lab/refs/heads/main/data/1p.jpg" alt="1" width="500" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
